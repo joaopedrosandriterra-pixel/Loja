@@ -12,34 +12,65 @@
 
         <div class="p-6 sm:p-8">
             {% if messages %}
-                <div class="mb-6">
-                    {% for message in messages %}
-                        <div class="p-4 mb-4 rounded-lg bg-green-50 border border-green-200 text-green-700">
-                            {{ message }}
-                        </div>
-                    {% endfor %}
+            <div class="mb-6">
+                {% for message in messages %}
+                <div class="p-4 mb-4 rounded-lg bg-green-50 border border-green-200 text-green-700">
+                    {{ message }}
                 </div>
+                {% endfor %}
+            </div>
             {% endif %}
 
             <form method="POST" action="" class="space-y-6">
                 {% csrf_token %}
-{% for field in form %}
-                    <div class="flex flex-col">
-                        <label for="{{ field.id_for_label }}" class="block text-sm font-medium text-gray-700 mb-1">
-                            {{ field.label }}
-                        </label>
-                        {{ field }}
-                        {% if field.help_text %}
-                            <p class="mt-1 text-sm text-gray-500">{{ field.help_text }}</p>
+                <form method="POST" class="space-y-6">
+                    {% csrf_token %}
+
+                    <div>
+                        <label for="{{ form.nome.id_for_label }}">Nome</label>
+                        {{ form.nome }}
+                        {% if form.nome.help_text %}
+                        <p>{{ form.nome.help_text }}</p>
                         {% endif %}
-                        {% for error in field.errors %}
-                            <p class="mt-1 text-sm text-red-600">{{ error }}</p>
+                        {% for erro in form.nome.errors %}
+                        <p class="text-red-600">{{ erro }}</p>
                         {% endfor %}
                     </div>
-                {% endfor %}
+
+                    <div>
+                        <label for="{{ form.preco.id_for_label }}">Preço</label>
+                        {{ form.preco }}
+                        {% if form.preco.help_text %}
+                        <p>{{ form.preco.help_text }}</p>
+                        {% endif %}
+                        {% for erro in form.preco.errors %}
+                        <p class="text-red-600">{{ erro }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.descricao.id_for_label }}">Descrição</label>
+                        {{ form.descricao }}
+                        {% for erro in form.descricao.errors %}
+                        <p class="text-red-600">{{ erro }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <div>
+                        <label for="{{ form.estoque.id_for_label }}">Estoque</label>
+                        {{ form.estoque }}
+                        {% for erro in form.estoque.errors %}
+                        <p class="text-red-600">{{ erro }}</p>
+                        {% endfor %}
+                    </div>
+
+                    <button type="submit">Salvar Produto</button>
+                </form>
+
 
                 <div class="pt-4 border-t border-gray-100 flex justify-end">
-                    <button type="submit" class="inline-flex justify-center rounded-lg border border-transparent bg-indigo-600 py-3 px-6 text-sm font-medium text-white shadow-md hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200">
+                    <button type="submit"
+                        class="inline-flex justify-center rounded-lg border border-transparent bg-indigo-600 py-3 px-6 text-sm font-medium text-white shadow-md hover:bg-indigo-700 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 transition-all duration-200">
                         Salvar Produto
                     </button>
                 </div>
