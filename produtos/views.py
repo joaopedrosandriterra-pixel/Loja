@@ -9,7 +9,7 @@ def cadastro_produto(request):
         if form.is_valid():
             form.save()
             messages.success(request, 'Produto cadastrado com sucesso!')
-            return redirect('produtos:cadastro_produto')  # Redireciona para a página inicial após o cadastro
+            return redirect('cadastro_produto')  # Redireciona para a página inicial após o cadastro
 
     else:
         form = ProdutoForm()
