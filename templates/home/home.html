@@ -3,6 +3,195 @@
 {% block title %}Home - Minha Loja{% endblock %}
 
 {% block content %}
-    <h1 class="text-3xl font-bold text-center mt-10">Bem-vindo à nossa loja!</h1>
-    <p class="text-center mt-4">Explore nossos produtos e aproveite as ofertas incríveis!</p>
+    <section class="relative bg-gradient-to-r from-violet-600 via-indigo-600 to-purple-700 text-white overflow-hidden py-24 sm:py-32 flex flex-col items-center justify-center text-center">
+       <!-- Elemento decorativo: Efeito de desfoque (Glassmorphism) no fundo para dar um toque mais premium -->
+        <div class="absolute top-0 left-1/2 w-full -translate-x-1/2 opacity-20 bg-white blur-3xl h-full rounded-full pointer-events-none"></div>
+
+        <div class="relative z-10 max-w-4xl px-4 sm:px-6 lg:px-8">
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-md">
+                O futuro da sua <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-300 to-orange-400">loja começa aqui</span>
+            </h1>
+            <p class="mt-4 text-lg sm:text-xl text-indigo-100 mb-10 max-w-2xl mx-auto font-medium">
+                Esta é a página inicial. O banco de dados ainda não está ligado, mas a beleza e a interatividade já estão garantidas.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="#produtos" class="px-8 py-4 bg-white text-indigo-600 font-bold rounded-full shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300">
+                    Ver Catálogo Fictício
+                </a>
+                <a href="#sobre" class="px-8 py-4 bg-indigo-500/20 text-white font-bold rounded-full shadow-lg border border-white/30 backdrop-blur-md hover:bg-indigo-500/30 transition-all duration-300">
+                    Saber Mais
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-slate-50" id="sobre">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center text-slate-700">
+                
+                <!-- Card de Benefício 1 -->
+                <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-indigo-100 rounded-full flex items-center justify-center text-indigo-600 text-2xl font-bold">
+                        1
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Qualidade Premium</h3>
+                    <p class="text-slate-500">Produtos escolhidos a dedo para oferecer a melhor experiência.</p>
+                </div>
+
+                <!-- Card de Benefício 2 -->
+                <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-purple-100 rounded-full flex items-center justify-center text-purple-600 text-2xl font-bold">
+                        2
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Envio Imediato</h3>
+                    <p class="text-slate-500">Separamos tudo para que o pedido chegue antes do esperado.</p>
+                </div>
+
+                <!-- Card de Benefício 3 -->
+                <div class="p-8 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all duration-300 border border-slate-100 hover:-translate-y-1">
+                    <div class="w-16 h-16 mx-auto mb-6 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 text-2xl font-bold">
+                        3
+                    </div>
+                    <h3 class="text-xl font-bold text-slate-900 mb-3">Atendimento Nota 10</h3>
+                    <p class="text-slate-500">Uma equipe sempre pronta para ajudar e resolver dúvidas.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="produtos" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-2 text-center">Nossos Produtos Fictícios</h2>
+            <p class="text-center text-slate-500 mb-12 max-w-2xl mx-auto">
+                Uma amostra de como os produtos ficarão alinhados. Quando ligarmos ao Back-end, 
+                esta área vai ganhar vida automaticamente.
+            </p>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- Exemplo de Produto 1 -->
+                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col">
+                    <!-- Área da Imagem do Produto -->
+                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
+                        <!-- Placeholder visual: Aqui entraria o {{ produto.imagem.url }} -->
+                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-indigo-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                            <span class="font-medium text-lg">IMG 1</span>
+                        </div>
+                        <!-- Tag de destaque (ex: Novo) -->
+                        <div class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            Novo
+                        </div>
+                    </div>
+                    <!-- Detalhes do Produto -->
+                    <div class="p-5 flex flex-col flex-grow text-left">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Tênis HyperX</h3>
+                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Um calçado perfeito para caminhadas pela cidade com máximo estilo.</p>
+                        
+                        <!-- Empurrar o preço e botão pro final -->
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-xl font-extrabold text-slate-900">R$ 299,90</span>
+                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemplo de Produto 2 -->
+                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col">
+                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
+                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-purple-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                            <span class="font-medium text-lg">IMG 2</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow text-left">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Camiseta Algodão</h3>
+                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Tecido super respirável e confortável para o dia a dia.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-xl font-extrabold text-slate-900">R$ 89,90</span>
+                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemplo de Produto 3 -->
+                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 flex flex-col">
+                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
+                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-pink-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                            <span class="font-medium text-lg">IMG 3</span>
+                        </div>
+                        <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
+                            20% OFF
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow text-left">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Relógio Chronos</h3>
+                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Estilo minimalista e pulseira em couro sintético.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <div class="flex flex-col">
+                                <span class="text-sm text-slate-400 line-through">R$ 499,90</span>
+                                <span class="text-xl font-extrabold text-slate-900">R$ 399,90</span>
+                            </div>
+                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Exemplo de Produto 4 -->
+                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 flex flex-col">
+                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
+                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-teal-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                            <span class="font-medium text-lg">IMG 4</span>
+                        </div>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow text-left">
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Mochila Urbana</h3>
+                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Espaçosa, resistente à água e perfeita para o trabalho ou facul.</p>
+                        <div class="mt-auto flex items-center justify-between">
+                            <span class="text-xl font-extrabold text-slate-900">R$ 159,90</span>
+                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
+                                +
+                            </button>
+                        </div>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#0b1120] border-t border-slate-800 py-8">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            
+            <p class="text-slate-400 text-sm order-2 md:order-1">
+                &copy; 2024 Your Company, Inc. All rights reserved.
+            </p>
+
+            <div class="flex items-center gap-6 text-slate-400 order-1 md:order-2">
+                <a href="#" class="hover:text-white transition-colors duration-200 text-xl" aria-label="Facebook">
+                    <i class="fab fa-facebook"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 text-xl" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 text-xl" aria-label="X">
+                    <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 text-xl" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="#" class="hover:text-white transition-colors duration-200 text-xl" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+            </div>
+
+        </div>
+    </footer>
+
+
 {% endblock %}

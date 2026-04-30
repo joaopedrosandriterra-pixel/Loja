@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from .forms import ProdutoForm
 from django.contrib import messages
 
-
 def cadastro_produto(request):
     if request.method == 'POST':
         form = ProdutoForm(request.POST)
