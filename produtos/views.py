@@ -4,7 +4,7 @@ from django.contrib import messages
 
 def cadastro_produto(request):
     if request.method == 'POST':
-        form = ProdutoForm(request.POST)
+        form = ProdutoForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             messages.success(request, 'Produto cadastrado com sucesso!')

@@ -4,7 +4,7 @@ from .models import Produto
 class ProdutoForm(forms.ModelForm):
     class Meta:
         model = Produto
-        fields = ['nome', 'preco', 'descricao', 'estoque']
+        fields = ['nome', 'preco', 'descricao', 'imagem', 'estoque']
         widgets = {
             'nome': forms.TextInput(attrs={
                 'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 border',
@@ -23,5 +23,9 @@ class ProdutoForm(forms.ModelForm):
             'estoque': forms.NumberInput(attrs={
                 'class': 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm px-4 py-2 border',
                 'placeholder': 'Quantidade em estoque'
+            }),
+            'imagem': forms.FileInput(attrs={
+                'class': 'mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100',
+                'accept': 'image/*'
             }),
         }

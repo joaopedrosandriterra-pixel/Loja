@@ -62,106 +62,65 @@
 
     <section id="produtos" class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl font-extrabold text-slate-900 mb-2 text-center">Nossos Produtos Fictícios</h2>
+            <h2 class="text-3xl font-extrabold text-slate-900 mb-2 text-center">Nossos Produtos</h2>
             <p class="text-center text-slate-500 mb-12 max-w-2xl mx-auto">
-                Uma amostra de como os produtos ficarão alinhados. Quando ligarmos ao Back-end, 
-                esta área vai ganhar vida automaticamente.
+                Conheça nossa seleção de produtos de qualidade premium.
             </p>
 
+            {% if produtos %}
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                
-                <!-- Exemplo de Produto 1 -->
+                {% for produto in produtos %}
+                <!-- Card do Produto -->
                 <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col">
                     <!-- Área da Imagem do Produto -->
                     <div class="aspect-square bg-slate-100 overflow-hidden relative">
-                        <!-- Placeholder visual: Aqui entraria o {{ produto.imagem.url }} -->
-                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-indigo-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
-                            <span class="font-medium text-lg">IMG 1</span>
-                        </div>
-                        <!-- Tag de destaque (ex: Novo) -->
+                        {% if produto.imagem %}
+                            <img src="{{ produto.imagem.url }}" alt="{{ produto.nome }}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                        {% else %}
+                            <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-indigo-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
+                                <span class="font-medium text-lg">Sem imagem</span>
+                            </div>
+                        {% endif %}
+                        <!-- Tag de destaque -->
                         <div class="absolute top-3 left-3 bg-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
                             Novo
                         </div>
                     </div>
                     <!-- Detalhes do Produto -->
                     <div class="p-5 flex flex-col flex-grow text-left">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Tênis HyperX</h3>
-                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Um calçado perfeito para caminhadas pela cidade com máximo estilo.</p>
+                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">{{ produto.nome }}</h3>
+                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">{{ produto.descricao }}</p>
+                        
+                        <!-- Estoque e Preço -->
+                        <div class="text-xs text-slate-400 mb-2">
+                            {% if produto.estoque > 0 %}
+                                <span class="text-green-600 font-semibold">✓ Em estoque ({{ produto.estoque }})</span>
+                            {% else %}
+                                <span class="text-red-600 font-semibold">✗ Fora de estoque</span>
+                            {% endif %}
+                        </div>
                         
                         <!-- Empurrar o preço e botão pro final -->
                         <div class="mt-auto flex items-center justify-between">
-                            <span class="text-xl font-extrabold text-slate-900">R$ 299,90</span>
-                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
+                            <span class="text-xl font-extrabold text-slate-900">R$ {{ produto.preco|floatformat:2 }}</span>
+                            <button {% if produto.estoque == 0 %}disabled{% endif %} class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors {% if produto.estoque == 0 %}opacity-50 cursor-not-allowed{% endif %}">
                                 +
                             </button>
                         </div>
                     </div>
                 </article>
-
-                <!-- Exemplo de Produto 2 -->
-                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-purple-500/10 transition-all duration-300 flex flex-col">
-                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
-                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-purple-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
-                            <span class="font-medium text-lg">IMG 2</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex flex-col flex-grow text-left">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Camiseta Algodão</h3>
-                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Tecido super respirável e confortável para o dia a dia.</p>
-                        <div class="mt-auto flex items-center justify-between">
-                            <span class="text-xl font-extrabold text-slate-900">R$ 89,90</span>
-                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Exemplo de Produto 3 -->
-                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-pink-500/10 transition-all duration-300 flex flex-col">
-                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
-                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-pink-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
-                            <span class="font-medium text-lg">IMG 3</span>
-                        </div>
-                        <div class="absolute top-3 left-3 bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                            20% OFF
-                        </div>
-                    </div>
-                    <div class="p-5 flex flex-col flex-grow text-left">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Relógio Chronos</h3>
-                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Estilo minimalista e pulseira em couro sintético.</p>
-                        <div class="mt-auto flex items-center justify-between">
-                            <div class="flex flex-col">
-                                <span class="text-sm text-slate-400 line-through">R$ 499,90</span>
-                                <span class="text-xl font-extrabold text-slate-900">R$ 399,90</span>
-                            </div>
-                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Exemplo de Produto 4 -->
-                <article class="group relative bg-white border border-slate-200 rounded-2xl overflow-hidden hover:shadow-2xl hover:shadow-teal-500/10 transition-all duration-300 flex flex-col">
-                    <div class="aspect-square bg-slate-100 overflow-hidden relative">
-                        <div class="w-full h-full flex items-center justify-center text-slate-400 bg-gradient-to-br from-teal-50 to-slate-100 group-hover:scale-110 transition-transform duration-500 ease-in-out">
-                            <span class="font-medium text-lg">IMG 4</span>
-                        </div>
-                    </div>
-                    <div class="p-5 flex flex-col flex-grow text-left">
-                        <h3 class="text-lg font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-indigo-600 transition-colors">Mochila Urbana</h3>
-                        <p class="text-sm text-slate-500 mb-4 line-clamp-2">Espaçosa, resistente à água e perfeita para o trabalho ou facul.</p>
-                        <div class="mt-auto flex items-center justify-between">
-                            <span class="text-xl font-extrabold text-slate-900">R$ 159,90</span>
-                            <button class="w-10 h-10 bg-indigo-50 text-indigo-600 rounded-full flex items-center justify-center hover:bg-indigo-600 hover:text-white transition-colors">
-                                +
-                            </button>
-                        </div>
-                    </div>
-                </article>
-
+                {% endfor %}
             </div>
+            {% else %}
+            <div class="text-center py-20">
+                <div class="text-6xl mb-4">📦</div>
+                <h3 class="text-2xl font-bold text-slate-700 mb-2">Nenhum produto cadastrado</h3>
+                <p class="text-slate-500 mb-8">Comece adicionando seus produtos!</p>
+                <a href="{% url 'cadastro_produto' %}" class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors">
+                    <span>+ Adicionar Produto</span>
+                </a>
+            </div>
+            {% endif %}
         </div>
     </section>
 
